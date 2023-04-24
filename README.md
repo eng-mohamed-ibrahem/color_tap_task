@@ -1,6 +1,6 @@
 # test task color tap
-generate random color and displayed it as background of screen;
-when user tap on the screen display different color on it.
+## generate random color and displayed it as background of screen;
+## when user tap on the screen display different color on it.
 
 A new Flutter project.
 
