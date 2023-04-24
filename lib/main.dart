@@ -30,6 +30,7 @@ class TestTask extends ConsumerWidget {
                 (state) => Color.fromRGBO(Random().nextInt(256),
                     Random().nextInt(256), Random().nextInt(256), 1),
               );
+          debugPrint('${ref.read(colorProvider)}');
         },
         child: Container(
           decoration: BoxDecoration(color: myColor),
