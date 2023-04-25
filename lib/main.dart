@@ -1,9 +1,11 @@
-import 'dart:math';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'color_provider.dart';
 
 void main(List<String> args) {
-  runApp(ProviderScope(
+  runApp(const ProviderScope(
     child: MaterialApp(
       home: TestTask(),
     ),
@@ -11,26 +13,20 @@ void main(List<String> args) {
 }
 
 class TestTask extends ConsumerWidget {
-  TestTask({super.key});
-
-  final StateProvider<Color> colorProvider =
-      StateProvider((ref) => Colors.white);
+  const TestTask({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Color myColor = ref.watch(colorProvider);
+    Color myColor = ref.watch(randomColorProvider);
 
+    log('1');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Randome Color Tap'),
       ),
       body: GestureDetector(
         onTap: () {
-          ref.watch(colorProvider.notifier).update(
-                (state) => Color.fromRGBO(Random().nextInt(256),
-                    Random().nextInt(256), Random().nextInt(256), 1),
-              );
-          debugPrint('${ref.read(colorProvider)}');
+          ref.watch(randomColorProvider.notifier).changeColor();
         },
         child: Container(
           decoration: BoxDecoration(color: myColor),
@@ -41,6 +37,11 @@ class TestTask extends ConsumerWidget {
             ),
           ),
         ),
+      ),
+      floatingActionButton: Text(
+        myColor.toString(),
+        style:
+            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
   }
