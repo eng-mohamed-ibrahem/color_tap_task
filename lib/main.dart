@@ -19,7 +19,6 @@ class TestTask extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     Color myColor = ref.watch(randomColorProvider);
 
-    log('1');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Randome Color Tap'),
@@ -38,11 +37,9 @@ class TestTask extends ConsumerWidget {
           ),
         ),
       ),
-      floatingActionButton: Text(
-        myColor.toString(),
-        style:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-      ),
+      floatingActionButton: Text(myColor.toString(),
+          style: const TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold)),
     );
   }
 }
