@@ -21,6 +21,10 @@ class TestTask extends ConsumerWidget {
         title: const Text('Randome Color Tap'),
         actions: [
           PopupMenuButton(
+            constraints: const BoxConstraints(
+              maxWidth: 70,
+            ),
+            color: myColor.withOpacity(.75),
             icon: const Icon(Icons.colorize),
             padding: const EdgeInsets.all(5),
             shape: RoundedRectangleBorder(
@@ -30,10 +34,13 @@ class TestTask extends ConsumerWidget {
               return <PopupMenuEntry<ColorConvertType>>[
                 const PopupMenuItem(
                     value: ColorConvertType.hexadecimal,
-                    child: Text('HEX color')),
+                    child: Text(
+                      'HEX',
+                      style: TextStyle(color: Colors.black),
+                    )),
                 const PopupMenuItem(
                   value: ColorConvertType.rgb,
-                  child: Text('RGB color'),
+                  child: Text('RGB', style: TextStyle(color: Colors.black)),
                 )
               ];
             },
