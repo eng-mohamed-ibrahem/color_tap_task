@@ -1,0 +1,1 @@
+enum ColorConvertType { hexadecimal, rgb }
